@@ -1,0 +1,43 @@
+{
+  "date": "2026-08-03",
+  "first_welcome_today": true,
+  "feed_status": {
+    "school": {
+      "status": "fresh",
+      "event_count": 4,
+      "last_event": "2026-08-18"
+    },
+    "work": {
+      "status": "fresh",
+      "event_count": 3,
+      "last_event": "2026-08-14"
+    },
+    "agent": {
+      "status": "ready",
+      "event_count": 5,
+      "last_event": "2026-08-10"
+    }
+  },
+  "itinerary": [
+    {
+      "source": "school",
+      "time": "09:00",
+      "title": "Synthetic design studio"
+    },
+    {
+      "source": "agent",
+      "time": "14:00",
+      "title": "Focused project block"
+    }
+  ],
+  "approvals": [
+    {
+      "id": "sample-study-plan",
+      "title": "Review synthetic study plan",
+      "risk": "calendar write",
+      "status": "Pending"
+    }
+  ],
+  "summary": "Synthetic daily startup generated from clean feed state and private-agent planning metadata."
+}
+

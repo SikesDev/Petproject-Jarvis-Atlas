@@ -1,0 +1,54 @@
+{
+  "date": "2026-08-03",
+  "status": "Synthetic",
+  "summary": {
+    "accountCount": 3,
+    "transactionCount": 4,
+    "displayTotalCash": "$1,250.00",
+    "displayTotalCreditDebt": "$120.00",
+    "displayInvestmentValue": "$2,500.00",
+    "displayTodayOutflow": "$42.00",
+    "displayTodayInflow": "$0.00"
+  },
+  "accounts": [
+    {
+      "name": "Demo Checking",
+      "type": "depository",
+      "subtype": "checking",
+      "institution": "Sample Bank",
+      "mask": "0000",
+      "displayBalance": "$1,250.00"
+    },
+    {
+      "name": "Demo Card",
+      "type": "credit",
+      "subtype": "credit card",
+      "institution": "Sample Bank",
+      "mask": "1111",
+      "displayBalance": "$120.00"
+    },
+    {
+      "name": "Demo Investments",
+      "type": "investment",
+      "subtype": "brokerage",
+      "institution": "Sample Brokerage",
+      "mask": "2222",
+      "displayBalance": "$2,500.00"
+    }
+  ],
+  "transactions": [
+    {
+      "date": "2026-08-03",
+      "name": "Sample Coffee",
+      "amount": 6.5,
+      "direction": "outflow"
+    },
+    {
+      "date": "2026-08-03",
+      "name": "Sample Transit",
+      "amount": 3.0,
+      "direction": "outflow"
+    }
+  ]
+}
+

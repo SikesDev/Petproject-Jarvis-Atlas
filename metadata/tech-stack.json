@@ -1,0 +1,21 @@
+{
+  "schema_version": "2026-07-28",
+  "languages": ["Python", "JavaScript", "HTML", "CSS", "Markdown", "JSON", "JSONL", "YAML", "TOML"],
+  "formats": ["ICS", "JSONL", "PWA manifest", "SVG", "Markdown", "GitHub Actions YAML"],
+  "runtime_shapes": [
+    "GitHub Actions scheduled and dispatch workflows",
+    "Local Python stdio MCP server",
+    "Node same-origin API server",
+    "Static dependency-light PWA shell",
+    "Local JSON interface store",
+    "Append-friendly JSONL work graph archive"
+  ],
+  "patterns": [
+    "deterministic parsing before AI review",
+    "public/private repository boundary",
+    "policy-gated private action layer",
+    "thin interface over owned backend contracts",
+    "synthetic examples for public demonstration"
+  ]
+}
+

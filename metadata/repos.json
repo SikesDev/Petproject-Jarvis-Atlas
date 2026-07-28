@@ -1,0 +1,71 @@
+{
+  "schema_version": "2026-07-28",
+  "source_scope": "Live Git roots under the local Gas City workspace",
+  "repositories": [
+    {
+      "id": "work-school-automation",
+      "display_name": "Work + School Automation",
+      "role": "Public ingestion and calendar publication edge",
+      "branch": "main",
+      "commit_count": 80,
+      "tracked_files": 34,
+      "primary_technologies": ["Python", "ICS", "GitHub Actions"],
+      "file_type_summary": {
+        "Python": 7,
+        "JSON": 3,
+        "Markdown": 3,
+        "Word Document": 3,
+        "YAML": 3,
+        "ICS": 2
+      }
+    },
+    {
+      "id": "landon-logs",
+      "display_name": "Landon Logs",
+      "role": "Private cognition, policy, MCP bridge, and scheduling layer",
+      "branch": "main",
+      "commit_count": 48,
+      "tracked_files": 111,
+      "primary_technologies": ["Python", "MCP", "JSON", "Markdown"],
+      "file_type_summary": {
+        "JSON": 57,
+        "Markdown": 23,
+        "Python": 7,
+        "JSONL": 5,
+        "JavaScript": 2,
+        "YAML": 2
+      }
+    },
+    {
+      "id": "gas-city-jsonl-archive",
+      "display_name": "Gas City JSONL Archive",
+      "role": "Local issue and work graph archive",
+      "branch": "main",
+      "commit_count": 6,
+      "tracked_files": 28,
+      "primary_technologies": ["JSONL"],
+      "file_type_summary": {
+        "JSONL": 28
+      }
+    },
+    {
+      "id": "jarvis-interface",
+      "display_name": "Jarvis Interface",
+      "role": "Thin PWA control surface",
+      "branch": "main",
+      "commit_count": 4,
+      "tracked_files": 30,
+      "primary_technologies": ["Node", "JavaScript", "PWA", "CSS"],
+      "file_type_summary": {
+        "JavaScript": 18,
+        "Markdown": 4,
+        "CSS": 1,
+        "HTML": 1,
+        "JSON": 1,
+        "SVG": 1,
+        "YAML": 1
+      }
+    }
+  ]
+}
+

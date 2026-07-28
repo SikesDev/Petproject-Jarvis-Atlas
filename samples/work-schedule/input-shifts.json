@@ -1,0 +1,26 @@
+{
+  "schema_version": "synthetic-2026-08",
+  "source": "fictional two-week schedule",
+  "employee": "Sample Worker",
+  "rows": [
+    {
+      "date": "2026-08-03",
+      "start": "09:00",
+      "end": "12:30",
+      "role": "front desk"
+    },
+    {
+      "date": "2026-08-05",
+      "start": "13:00",
+      "end": "17:00",
+      "role": "room support"
+    },
+    {
+      "date": "2026-08-07",
+      "start": "10:30",
+      "end": "14:00",
+      "role": "event setup"
+    }
+  ]
+}
+

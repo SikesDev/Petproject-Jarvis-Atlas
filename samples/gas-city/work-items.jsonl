@@ -1,0 +1,5 @@
+{"id":"atlas-001","project":"wsa","title":"Document calendar filtering pipeline","status":"closed","labels":["docs","architecture"],"dependency_count":0}
+{"id":"atlas-002","project":"llp","title":"Summarize private agent policy boundaries","status":"closed","labels":["docs","policy"],"dependency_count":1}
+{"id":"atlas-003","project":"jif","title":"Add synthetic bootstrap response","status":"closed","labels":["sample-data","interface"],"dependency_count":0}
+{"id":"atlas-004","project":"hq","title":"Map multi-repo workflow graph","status":"closed","labels":["diagram","coordination"],"dependency_count":2}
+

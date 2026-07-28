@@ -1,0 +1,30 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Synthetic Work Schedule//EN
+X-WR-CALNAME:Synthetic Work Schedule
+BEGIN:VEVENT
+UID:sample-shift-20260803@example.test
+DTSTAMP:20260801T120000Z
+DTSTART;TZID=America/New_York:20260803T090000
+DTEND;TZID=America/New_York:20260803T123000
+SUMMARY:Work Shift - front desk
+LOCATION:Sample Success Center, 100 Demo Way, Example City
+END:VEVENT
+BEGIN:VEVENT
+UID:sample-shift-20260805@example.test
+DTSTAMP:20260801T120000Z
+DTSTART;TZID=America/New_York:20260805T130000
+DTEND;TZID=America/New_York:20260805T170000
+SUMMARY:Work Shift - room support
+LOCATION:Sample Success Center, 100 Demo Way, Example City
+END:VEVENT
+BEGIN:VEVENT
+UID:sample-shift-20260807@example.test
+DTSTAMP:20260801T120000Z
+DTSTART;TZID=America/New_York:20260807T103000
+DTEND;TZID=America/New_York:20260807T140000
+SUMMARY:Work Shift - event setup
+LOCATION:Sample Success Center, 100 Demo Way, Example City
+END:VEVENT
+END:VCALENDAR
+
