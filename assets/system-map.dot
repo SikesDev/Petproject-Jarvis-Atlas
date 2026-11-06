@@ -1,0 +1,26 @@
+digraph Jarvis {
+  graph [rankdir=TB,bgcolor="#f7f9fb",pad=0.4,nodesep=0.45,ranksep=0.65,fontname="DejaVu Sans",label="Private single-user cloud scheduling",labelloc=t,fontsize=22];
+  node [shape=box,style="rounded,filled",fillcolor=white,color="#a7b6c3",fontname="DejaVu Sans",fontsize=13,margin="0.2,0.14"];
+  edge [fontname="DejaVu Sans",fontsize=11,color="#60788c"];
+  canvas [label="Canvas calendar URL"];
+  power [label="Power Automate work document"];
+  capture [label="Durable request capture\nExisting authentication unchanged",fillcolor="#e2eef7"];
+  filtering [label="work-school-automation-hub\nTask-only Canvas classification\nFree-first review for ambiguity",fillcolor="#e2eef7"];
+  ingestion [label="work-school-automation-hub\nWork parser + independent free vision\nOpenAI only for unresolved cases",fillcolor="#e2eef7"];
+  facts [label="Two clean ICS feeds\nOne hash manifest at an exact Git commit"];
+  preferences [label="Editable preferences folder\nCurrent calendar targets and rules",fillcolor="#eaf2e3"];
+  calendars [label="All current iCloud calendars\nGeorgia Winterguard included",fillcolor="#eaf2e3"];
+  planner [label="Landon-Logs\nSchool first; balance gym and maintenance",fillcolor="#eaf2e3"];
+  review [label="Hard constraints + intelligent review\nFree GitHub Models first"];
+  reconcile [label="Availability refresh + ETags\nCreate/update before obsolete deletion\nRecovery journal + verification"];
+  targets [label="School: study\nPersonal: gym\nPlanner: flexible maintenance"];
+  shell [label="API-Interface\nStatic PWA shell; future development only",style="rounded,filled,dashed",fillcolor="#f0e8f4"];
+  appointments [label="Appointments\nDisabled future provider",style="rounded,filled,dashed",fillcolor="#f0e8f4"];
+  canvas -> filtering -> facts;
+  power -> capture -> ingestion -> facts;
+  facts -> planner;
+  preferences -> planner;calendars -> planner;
+  planner -> review -> reconcile -> targets;
+  {rank=same;preferences;calendars;}
+  {rank=same;shell;appointments;}
+}

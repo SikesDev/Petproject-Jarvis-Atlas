@@ -1,27 +1,3 @@
-# MCP Boundary Snippets
+# MCP boundary
 
-## Redact Secret-Like Config Values
-
-```python
-def redacted_config(config):
-    cleaned = json.loads(json.dumps(config))
-    secrets = cleaned.setdefault("secrets", {})
-    for key in list(secrets):
-        if "password" in key or "token" in key:
-            secrets[key] = "<redacted>"
-    return cleaned
-```
-
-## Skip Pulls When Tracked Local Work Exists
-
-```python
-def tracked_worktree_dirty(status_text):
-    for line in status_text.splitlines():
-        if not line.strip():
-            continue
-        if line.startswith("??"):
-            continue
-        return True
-    return False
-```
-
+The terminal MCP bridge is for read-only scheduler status and preference inspection. It does not start local applications or mutate calendars at startup. The disabled appointment tool explicitly reports that no booking capability is implemented. Production calendar mutations belong to the coordinated cloud scheduler after input validation, availability checks and intelligent review.

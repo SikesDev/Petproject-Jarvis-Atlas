@@ -1,20 +1,5 @@
-# Project Story
+# Project purpose
 
-Petproject Jarvis is a personal automation platform built as a set of small, local-first systems instead of a single monolith.
+This is a small personal automation system, not a multi-user platform. Its job is to turn school/work inputs into reliable calendar facts, then use current commitments and explicit preferences to make a useful weekly plan.
 
-The first layer turns noisy external calendars and work schedules into clean feeds. The second layer keeps private memory, policy, and planning state behind a local MCP server. The third layer is a lightweight PWA control surface that can show the current day, approvals, activity, chat, and finance snapshots from a trusted local machine.
-
-The interesting engineering challenge is not just "make an assistant." It is designing boundaries so the assistant can be useful without owning every source of truth. Calendar ingestion, private planning, local approvals, and browser-facing UX all have separate responsibilities.
-
-This atlas is the public companion repository. It documents the architecture and workflows with synthetic examples so the project can be shared publicly while the actual private repos stay private.
-
-## What This Demonstrates
-
-- Multi-repo system design.
-- Local-first automation around real personal workflows.
-- Privacy-aware documentation and demo data.
-- Deterministic parsers with model-backed review gates.
-- MCP-based agent supervision.
-- A thin PWA interface over private state.
-- Work graph tracking through Gas City JSONL archives.
-
+The design stays inspectable: a private feed manifest, an editable preferences folder, one coordinated scheduler and a recovery journal. School is prioritized; gym and maintenance share the remaining space. Free model services are preferred and paid review is reserved for unresolved cases. The static interface shell is retained for a later project rather than presented as a completed control plane.
