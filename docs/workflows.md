@@ -1,87 +1,39 @@
-# Workflow Walkthroughs
+# Workflows and dependencies
 
-## Canvas Calendar Filtering
+## Feed publication
 
 ```mermaid
 sequenceDiagram
-    participant Feed as Canvas-like ICS Feed
-    participant Parser as Deterministic Filter
-    participant Cache as Review Cache
-    participant Model as Model Review
-    participant Output as Filtered ICS
-
-    Feed->>Parser: Raw calendar events
-    Parser->>Parser: Unfold lines, split events, remove noisy records
-    Parser->>Cache: Check known event decisions
-    Cache-->>Parser: Reuse prior decisions
-    Parser->>Model: Send only unresolved current/future decisions
-    Model-->>Parser: Structured keep/drop guidance
-    Parser->>Output: Publish clean assignment calendar
+  participant PA as Power Automate
+  participant Inbox as Actions input artifact
+  participant Publisher as Serialized feed publisher
+  participant Models as GitHub Models / fallback
+  participant Private as Private scheduler
+  PA->>Inbox: Existing attachment_base64/contentBytes dispatch
+  Publisher->>Inbox: Drain every unprocessed request oldest-first
+  Publisher->>Models: Parse plus independent document vision
+  Models-->>Publisher: Verified work rows or unresolved error
+  Publisher->>Publisher: Fetch/filter Canvas, validate both feeds
+  Publisher->>Publisher: Commit receipts + checksummed manifest
+  Publisher->>Private: One dispatch with exact source SHA
 ```
 
-See [synthetic raw calendar](../samples/canvas/raw-calendar.ics) and [synthetic filtered calendar](../samples/canvas/filtered-calendar.ics).
+Input capture happens before the publisher concurrency group. Replacing a pending GitHub job therefore does not discard its input artifact. Failed requests remain available for retry. Daily catch-up recovers interrupted publication/dispatch. Artifacts have explicit retention; they are a bounded inbox, not a permanent archive.
 
-## Work Schedule Extraction
+Canvas output contains actionable school work. Deterministic informational exclusions and task patterns are documented in the feed repository; unknown titles require classification. Temporal filtering precedes cache reuse. Work parsing is tailored to the source table layout; independent GitHub vision sees the original rendered document without parser answers. OpenAI is optional and used only when free review fails or disagrees. An unresolved document preserves the existing feed.
 
-```mermaid
-flowchart TB
-    Doc["Schedule document\nDOCX, PDF, HTML, or image"]
-    Deterministic["Parser\ntext conversion, table/cell extraction,\ntime normalization"]
-    Model["Independent model extraction"]
-    Compare["Normalize and compare rows"]
-    Arbiter["Vision fallback for disagreements"]
-    Calendar["Work schedule ICS"]
-    Issue["Validation issue or proposal"]
-
-    Doc --> Deterministic
-    Doc --> Model
-    Deterministic --> Compare
-    Model --> Compare
-    Compare -->|"matching rows"| Calendar
-    Compare -->|"disputed rows"| Arbiter
-    Arbiter -->|"resolved"| Calendar
-    Arbiter -->|"needs human review"| Issue
-```
-
-See [synthetic input rows](../samples/work-schedule/input-shifts.json) and [synthetic calendar output](../samples/work-schedule/work-schedule.ics).
-
-## Daily Startup
+## Scheduling
 
 ```mermaid
 flowchart LR
-    Supervisor["Supervisor session"]
-    MCP["Landon Logs MCP server"]
-    Feeds["School, work, and agent feeds"]
-    Workers["Scoped workers"]
-    Summary["Daily welcome summary"]
-    Decisions["User decisions"]
-
-    Supervisor --> MCP
-    MCP --> Feeds
-    MCP --> Workers
-    Workers --> MCP
-    MCP --> Summary
-    Summary --> Decisions
+  Inputs[Exact feed SHA and hashes] --> Health[Validate snapshot and work horizon]
+  Health --> Availability[Discover and read every current calendar]
+  Availability --> Study[Allocate school work first]
+  Study --> Balance[Balance gym and long maintenance blocks]
+  Balance --> Review[Required intelligent preference review]
+  Review --> Refresh[Recheck availability]
+  Refresh --> Write[Create/update before obsolete-event deletion]
+  Write --> Verify[Verify remote state and save completion]
 ```
 
-See [synthetic daily startup payload](../samples/agent/daily-startup.json).
-
-## Interface Bootstrap
-
-```mermaid
-sequenceDiagram
-    participant Browser as PWA Browser
-    participant API as Local API
-    participant Private as Private Agent Repo
-    participant Public as Public Feed Repo
-    participant Store as Interface Store
-
-    Browser->>API: GET /api/bootstrap
-    API->>Private: Read daily state, plans, approvals
-    API->>Public: Read feed freshness and today events
-    API->>Store: Read local chat and decisions
-    API-->>Browser: Dashboard payload
-```
-
-See [synthetic bootstrap response](../samples/interface/bootstrap-response.json).
-
+Failures never turn unavailable calendars into free time. A rejected/failed review cannot silently become a local approval. A partial reconciliation retains an operation journal; retry derives the remaining diff from observed remote state. No independent gym/study workflow competes for the same free time.

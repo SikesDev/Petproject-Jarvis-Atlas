@@ -1,37 +1,7 @@
-# Work + School Automation
+# Work and school ingestion
 
-## Role
+Private cloud pipeline with exactly two authoritative outputs: `filtered-canvas.ics` and `work-schedule.ics`. A checksummed manifest and durable input receipts describe each published snapshot.
 
-Public ingestion and publication edge for school and work calendar automation.
+Canvas rules exclude non-actionable calendar information and duplicates; task titles are retained, while ambiguous titles require model classification. The original Canvas account URL and Power Automate input contract remain supported.
 
-## What It Does
-
-- Filters a Canvas-like ICS feed into a cleaner actionable calendar.
-- Parses work schedule documents into normalized shift rows.
-- Publishes generated ICS feeds.
-- Uses GitHub Actions for recurring cloud execution.
-- Uses model review as a validation layer around deterministic parsing.
-- Keeps local reminder sync narrow and macOS-specific.
-
-## Notable Source Areas
-
-| Area | Purpose |
-| --- | --- |
-| `filter_canvas_ics.py` | ICS parsing, event filtering, line folding, and output feed generation |
-| `work_schedule_ics.py` | Schedule document parsing, date/time normalization, and ICS writing |
-| `canvas_cloud_sync.py` | Cloud orchestration for Canvas feed updates |
-| `work_schedule_cloud_sync.py` | Cloud orchestration for work schedule extraction and review |
-| `model_review.py` | Shared model-provider plumbing without feed-specific business rules |
-| `.github/workflows/` | Scheduled and dispatchable automation |
-
-## Engineering Takeaway
-
-This repo keeps the public edge deterministic. It parses known input formats directly, then uses model review only for cases that benefit from independent judgment or fallback arbitration.
-
-## Related Samples
-
-- [Raw calendar sample](../samples/canvas/raw-calendar.ics)
-- [Filtered calendar sample](../samples/canvas/filtered-calendar.ics)
-- [Synthetic shift rows](../samples/work-schedule/input-shifts.json)
-- [Synthetic work schedule ICS](../samples/work-schedule/work-schedule.ics)
-
+Work schedules use the source-specific parser plus independent GitHub-hosted vision of the original document. LibreOffice makes Word rendering cloud-compatible. OpenAI is only a fallback for failures/disagreements. Downstream scheduling begins only after a healthy two-feed snapshot has been published.

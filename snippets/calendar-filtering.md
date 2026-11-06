@@ -1,35 +1,5 @@
-# Calendar Filtering Snippets
+# Actionable Canvas output
 
-These excerpts show structure-only logic from the calendar pipeline.
+`classify_event` returns keep, skip or needs_review. Announcements, holidays, attendance and class-information events are not tasks. Homework, projects, quizzes, exams and other explicit action titles are tasks. Existing course-specific CS announcement and MATH duplicate rules remain documented in the owning repository. Unknown titles must be classified rather than silently forwarded.
 
-## Remove Rich Descriptions From Published Events
-
-```python
-def sanitize_event(event):
-    sanitized = []
-    for line in event:
-        if line.startswith("DESCRIPTION") or line.startswith("X-ALT-DESC"):
-            continue
-        sanitized.append(line)
-    return sanitized
-```
-
-## Keep Actionable Events After Duplicate Checks
-
-```python
-def filter_calendar(text, start_date=None):
-    lines = unfold_ics(text)
-    header, events, footer = split_calendar(lines)
-    platform_keys = platform_assignment_keys(events)
-    kept_events = []
-
-    for event in events:
-        starts_on = event_date(event)
-        if start_date and starts_on and starts_on < start_date:
-            continue
-        if should_keep_event(event, platform_keys):
-            kept_events.append(sanitize_event(event))
-
-    return write_calendar(header, kept_events, footer)
-```
-
+The rolling date window is enforced before semantic cache lookup, and expired cache entries are pruned. Exact current patterns live beside the parser and are explained in the feed repository's filtering documentation.

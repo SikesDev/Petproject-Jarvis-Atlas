@@ -1,24 +1,7 @@
-# Public Boundaries
+# Private operating boundaries
 
-The atlas is designed to explain the system without publishing its private operating state.
+The operational repositories and source data are private and single-user. Canvas and Power Automate retain their existing Georgia Tech authentication and bearer-token mechanisms; iCloud retains its existing app-specific-password authentication. This cleanup adds data-health and concurrency checks, not another login barrier.
 
-## Included
+Private model review intentionally receives relevant scheduling preferences and source-document context. GitHub Models is the primary free service; OpenAI is a last resort. Review is meant to provide an independent intellectual assessment, not merely re-run deterministic rules.
 
-- Repository roles and architecture.
-- File-type and scale metadata.
-- Short structural code excerpts.
-- Synthetic sample payloads and calendar outputs.
-- Workflow diagrams.
-- Public-facing project narrative.
-
-## Not Included
-
-- Real calendars, tasks, reminders, emails, browser state, credentials, tokens, financial records, private remotes, or production logs.
-- Exact commit messages.
-- Full proprietary modules.
-- Generated planning artifacts from the private workspace.
-
-## How To Read The Samples
-
-Every file under `samples/` is fictional. The names, dates, IDs, account labels, balances, shifts, events, and decisions are placeholders used to show data flow and schema shape.
-
+This atlas contains synthetic examples and architectural explanations only. Do not copy real feed URLs, credentials, browser state, events, personal preference content or production journals into it. Future interface development remains outside the active pipeline; its current shell exposes no personal data.

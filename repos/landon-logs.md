@@ -1,35 +1,11 @@
 # Landon Logs
 
-## Role
+Private cloud planning and calendar ownership.
 
-Private cognition, policy, memory, MCP bridge, and agent-owned scheduling layer.
+- `preferences/` holds current prose, numeric scheduling rules and workout templates.
+- `landon_scheduler/` separates preferences, calendar codecs, CalDAV snapshots, planning, review, storage and reconciliation.
+- `scripts/schedule.py` is the sole production entry point.
+- `data/scheduler/` holds current outcome and recovery evidence.
+- The small stdio MCP bridge reads status/preferences and reports the disabled future appointment integration.
 
-## What It Does
-
-- Provides a local stdio MCP server for supervising agent sessions.
-- Reads public feed outputs from Work + School Automation.
-- Stores private policies, preferences, proposals, worker reports, and agent calendar state.
-- Produces daily startup summaries from feed freshness, itinerary, and private planning context.
-- Dispatches small scoped workers for feed monitoring, task inventory, memory review, assignment triage, and planning notes.
-- Keeps high-impact calendar, memory, and external-service actions behind policy and user intent.
-
-## Notable Source Areas
-
-| Area | Purpose |
-| --- | --- |
-| `mcp_landon_logs.py` | Standard-library MCP server and local tool surface |
-| `agent_framework/` | Shared parsing and agent helper logic |
-| `agents/` | Worker registry, schemas, and prompts |
-| `policies/` | Access and automation boundaries |
-| `scripts/` | Planning, schedule review, reminders, and context extraction helpers |
-| `landon_logs/` | Durable human-readable knowledge surfaces |
-
-## Engineering Takeaway
-
-This repo is the private authority layer. It centralizes memory and policy while allowing other repos to stay narrow: public feed publication remains outside, and UI state is rendered through controlled adapters.
-
-## Related Samples
-
-- [Synthetic daily startup payload](../samples/agent/daily-startup.json)
-- [Gas City synthetic work items](../samples/gas-city/work-items.jsonl)
-
+Study blocks go to School, gym to Personal and flexible maintenance to Planner. No local-app reminder integration is part of this architecture.
